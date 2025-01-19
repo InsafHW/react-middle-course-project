@@ -1,7 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
-
-console.log(path.resolve(__dirname, 'src', 'index.ts'))
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const config: webpack.Configuration = {
     entry: './src/index.ts',
@@ -21,6 +20,11 @@ const config: webpack.Configuration = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
     },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, 'public', 'index.html'),
+        }),
+    ]
 };
 
 export default config;
