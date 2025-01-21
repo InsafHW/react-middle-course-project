@@ -2,10 +2,11 @@ import webpack from 'webpack'
 import {buildPlugins} from './buildPlugins'
 import {buildLoaders} from './buildLoaders'
 import {buildResolvers} from './buildResolvers'
-import {BuildConfiguration} from './types/config'
+import {BuildOptions} from './types/config'
+import {buildDevServer} from './buildDevServer'
 
-export function buildWebpackConfig(options: BuildConfiguration): webpack.Configuration {
-    const {mode, paths} = options
+export function buildWebpackConfig(options: BuildOptions): webpack.Configuration {
+    const {mode, paths, isDev} = options
 
     return {
         mode,
@@ -13,11 +14,18 @@ export function buildWebpackConfig(options: BuildConfiguration): webpack.Configu
         output: {
             filename: '[name].[contenthash].js',
             path: paths.dist,
+            clean: true,
         },
         plugins: buildPlugins(options),
         module: {
             rules: buildLoaders(),
         },
         resolve: buildResolvers(),
+        devServer: isDev
+            ? buildDevServer(options)
+            : undefined,
+        devtool: isDev
+            ? 'inline-source-map'
+            : undefined,
     }
 }

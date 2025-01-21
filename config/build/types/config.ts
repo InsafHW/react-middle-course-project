@@ -6,14 +6,21 @@ type BuildPaths = {
     html: string,
 }
 
-type BuildConfiguration = {
+type BuildEnv = {
+    port: number,
+    mode: BuildMode,
+}
+
+type BuildOptions = {
     mode: BuildMode,
     paths: BuildPaths,
     isDev: boolean,
+    port: number,
 }
 
 export type {
+    BuildEnv,
     BuildMode,
     BuildPaths,
-    BuildConfiguration,
+    BuildOptions,
 }

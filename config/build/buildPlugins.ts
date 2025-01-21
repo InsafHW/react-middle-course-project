@@ -1,8 +1,8 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import webpack from 'webpack'
-import {BuildConfiguration} from './types/config'
+import {BuildOptions} from './types/config'
 
-export function buildPlugins({paths}: BuildConfiguration): webpack.WebpackPluginInstance[] {
+export function buildPlugins({paths}: BuildOptions): webpack.WebpackPluginInstance[] {
     return [
         new HtmlWebpackPlugin({
             template: paths.html,
