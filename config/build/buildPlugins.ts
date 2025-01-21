@@ -11,6 +11,9 @@ export function buildPlugins({paths, isDev}: BuildOptions): webpack.WebpackPlugi
         new webpack.ProgressPlugin(),
         isDev
             ? undefined
-            : new MiniCssExtractPlugin(),
+            : new MiniCssExtractPlugin({
+                 filename: 'css/[name].[contenthash:8].css',
+                 chunkFilename: 'css/[name].[contenthash:8].css',
+            }),
     ].filter(Boolean)
 }
