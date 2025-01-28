@@ -1,13 +1,18 @@
-import './index.scss'
-import {BrowserRouter, NavLink, Route, Routes} from 'react-router'
+import './styles/index.scss'
+import {NavLink, Route, Routes} from 'react-router'
 import {AboutPageAsync} from './pages/aboutPage/AboutPage.async'
 import {MainPageAsync} from './pages/mainPage/MainPage.async'
 import {Suspense} from 'react'
+import {Theme} from './theme/ThemeContext'
+import {useTheme} from './theme/useTheme'
 
 function App() {
+    const {theme, setTheme} = useTheme()
+
     return (
-        <BrowserRouter>
-            <div className="app">
+        <div className={`app ${theme}`}>
+            <button onClick={() => setTheme(theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT)}>Change Theme</button>
+            <div>
                 <NavLink to={'/'}>to main</NavLink>
                 <NavLink to={'/about'}>to about</NavLink>
                 <Routes>
@@ -29,7 +34,7 @@ function App() {
                     />
                 </Routes>
             </div>
-        </BrowserRouter>
+        </div>
     )
 }
 
