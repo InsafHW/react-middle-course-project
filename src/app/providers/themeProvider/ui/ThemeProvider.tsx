@@ -1,5 +1,5 @@
 import {PropsWithChildren, useMemo, useState} from 'react'
-import {LS_THEME_KEY, Theme, ThemeContext} from './ThemeContext'
+import {LS_THEME_KEY, Theme, ThemeContext} from '../lib/ThemeContext'
 
 function getInitialTheme(): Theme {
     const themeFromLs = localStorage.getItem(LS_THEME_KEY) as Theme | undefined

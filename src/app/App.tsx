@@ -1,11 +1,10 @@
 import './styles/index.scss'
 import {NavLink, Route, Routes} from 'react-router'
-import {AboutPageAsync} from './pages/aboutPage/AboutPage.async'
-import {MainPageAsync} from './pages/mainPage/MainPage.async'
 import {Suspense} from 'react'
-import {Theme} from './theme/ThemeContext'
-import {useTheme} from './theme/useTheme'
-import {classNames} from './helpers/classNames/classNames'
+import {Theme, useTheme} from 'app/providers/themeProvider'
+import {classNames} from 'shared/classNames'
+import {AboutPage} from 'pages/aboutPage'
+import {MainPage} from 'pages/mainPage'
 
 function App() {
     const {theme, setTheme} = useTheme()
@@ -21,7 +20,7 @@ function App() {
                         path="/"
                         element={(
                             <Suspense key={'/'} fallback={<div>LOADING))</div>}>
-                                <MainPageAsync />
+                                <AboutPage />
                             </Suspense>
                         )}
                     />
@@ -29,7 +28,7 @@ function App() {
                         path="/about"
                         element={(
                             <Suspense key={'/about'} fallback={<div>LOADING)))))</div>}>
-                                <AboutPageAsync />
+                                <MainPage />
                             </Suspense>
                         )}
                     />
