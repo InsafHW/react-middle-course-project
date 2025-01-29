@@ -5,12 +5,13 @@ import {MainPageAsync} from './pages/mainPage/MainPage.async'
 import {Suspense} from 'react'
 import {Theme} from './theme/ThemeContext'
 import {useTheme} from './theme/useTheme'
+import {classNames} from './helpers/classNames/classNames'
 
 function App() {
     const {theme, setTheme} = useTheme()
 
     return (
-        <div className={`app ${theme}`}>
+        <div className={classNames('app', {}, theme)}>
             <button onClick={() => setTheme(theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT)}>Change Theme</button>
             <div>
                 <NavLink to={'/'}>to main</NavLink>
