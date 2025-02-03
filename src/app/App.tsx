@@ -1,10 +1,8 @@
 import './styles/index.scss'
-import {NavLink, Route, Routes} from 'react-router'
-import {Suspense} from 'react'
+import {NavLink} from 'react-router'
 import {Theme, useTheme} from 'app/providers/themeProvider'
 import {classNames} from 'shared/classNames'
-import {AboutPage} from 'pages/aboutPage'
-import {MainPage} from 'pages/mainPage'
+import {Routes} from 'app/providers/routerProvider'
 
 function App() {
     const {theme, setTheme} = useTheme()
@@ -15,24 +13,7 @@ function App() {
             <div>
                 <NavLink to={'/'}>to main</NavLink>
                 <NavLink to={'/about'}>to about</NavLink>
-                <Routes>
-                    <Route
-                        path="/"
-                        element={(
-                            <Suspense key={'/'} fallback={<div>LOADING))</div>}>
-                                <AboutPage />
-                            </Suspense>
-                        )}
-                    />
-                    <Route
-                        path="/about"
-                        element={(
-                            <Suspense key={'/about'} fallback={<div>LOADING)))))</div>}>
-                                <MainPage />
-                            </Suspense>
-                        )}
-                    />
-                </Routes>
+                <Routes />
             </div>
         </div>
     )
